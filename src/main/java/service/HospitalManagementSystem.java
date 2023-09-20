@@ -27,7 +27,7 @@ public class HospitalManagementSystem {
                 filter(appointment -> appointment.dateTime().toLocalDate().isAfter(thirtyDaysAgo)
                         && appointment.dateTime().toLocalDate().isBefore(today))
                 .collect(Collectors.groupingBy(
-                        Appointment::patientId,
+                        Appointment::patientId,//könnte man auch mit patients machen, wenn zuvor Patient an Appointment übergeben würde
                         Collectors.counting()
                 ));
         return appointments.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey);
